@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.env.osx": {
+    "DOTNET_ROOT": "/opt/homebrew/opt/dotnet/libexec"
+  }
+}

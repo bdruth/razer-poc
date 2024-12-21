@@ -1,0 +1,29 @@
+local.db
+
+# Build outputs and temporary files
+bin/
+obj/
+*.dll
+*.pdb
+*.log
+*.exe
+
+# User secrets files (sensitive information)
+.runtimeconfig.json
+
+# NuGet package restore files 
+*.deps.json
+global-json
+packages/
+
+# Visual Studio specific files (depending on your workflow)
+*.suo
+*.vs.
+*.sln.doccache
+
+# .NET Core publish artifacts
+publish/
+docs/
+_PublishedWebsites/
+
+wwwroot/lib/*
