@@ -34,13 +34,23 @@ app.MapControllerRoute(
 
 using (var scope = app.Services.CreateScope())
 {
-  // Get the instance of AddressSeeder from the service provider
-  var seeder = scope.ServiceProvider.GetService<AddressModelSeeder>();
-
-  if (seeder != null)
+  if (scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>().IsDevelopment())
   {
-    // Now call Seed on it to seed the data
-    seeder.Seed();
+    // Automatically update migrations on startup (Development only)
+    var dbContext = scope.ServiceProvider.GetService<AddressContext>();
+    if (dbContext != null)
+    {
+      dbContext.Database.Migrate();
+    }
+
+    // Get the instance of AddressSeeder from the service provider
+    var seeder = scope.ServiceProvider.GetService<AddressModelSeeder>();
+
+    if (seeder != null)
+    {
+      // Now call Seed on it to seed the data
+      seeder.Seed();
+    }
   }
 }
 
